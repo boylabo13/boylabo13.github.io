@@ -9,7 +9,7 @@ padding: 0;
 }
 
 body {
-  background-image: url('img/bg1.jpg');
+  background-color: #000; background-image: none;  /*back up background --> https://img.magnific.com/free-photo/abstract-textured-backgound_1258-30555.jpg?semt=ais_hybrid&w=740&q=80 */
   background-size: 100% 100%;
   background-position: center;
   background-attachment: fixed;
