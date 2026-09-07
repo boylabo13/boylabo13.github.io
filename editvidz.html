@@ -1,0 +1,101 @@
+<title>My edited Vidz</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+  .ve-bg{ background:#101010 url('https://scontent.xx.fbcdn.net/v/t39.105495-1/798064718_1738439940608426_6347075879299221728_n.webp?_nc_ht=scontent.xx.fbcdn.net&_nc_cat=102&_nc_ohc=ot5S6EXRhF4Q7kNvwH2xHaM&sdl=0&ccb=14-4&oh=00_AQK-2cS_NdsnSq3Pc9LnFQIg3mDKhscTjpU4IsxSKy4Bwg&oe=6AA2EC12&_nc_sid=a21977') center center / cover no-repeat; padding:40px 0; position:relative; }
+  .ve-bg::before{ content:''; position:absolute; inset:0; background:rgba(10,10,10,.6); }
+  .ve-wrap{ position:relative; z-index:1; font-family:'Inter',sans-serif; color:#fff; max-width:1120px; margin:0 auto; padding:60px 20px; box-sizing:border-box; width:100%; }
+  .ve-wrap *{ box-sizing:border-box; }
+  .ve-title{ font-size:clamp(24px, 6vw, 42px); font-weight:700; letter-spacing:-0.03em; line-height:1.05; margin-bottom:8px; }
+  .ve-sub{ color:#888; font-size:clamp(11px, 2.8vw, 13px); margin-bottom:32px; }
+  
+  /* MAIN CONTAINER - NOW WITH GAP BETWEEN CLIENTS */
+  .ve-main-box{ display:flex; flex-direction:column; gap:48px; width:100%; }
+  
+  /* EACH CLIENT IS ITS OWN CARD */
+  .ve-client-group{ background:#111; border:1px solid #1e1e1e; border-radius:10px; overflow:hidden; }
+
+  .ve-client-top{ display:flex; gap:14px; align-items:center; padding:20px 24px; border-bottom:1px solid #1e1e1e; flex-wrap:wrap; background:#111; }
+  .ve-avatar{ width:52px; height:52px; min-width:52px; border-radius:50%; object-fit:cover; background:#222; }
+  .ve-client-info{ flex:1; min-width:0; }
+  .ve-client-info b{ display:block; font-size:clamp(13px, 3.5vw, 15px); }
+  .ve-client-info span{ font-size:11px; color:#888; display:block; margin-top:2px; }
+  .ve-visit{ font-size:11px; letter-spacing:.1em; border:1px solid #2a2a2a; padding:10px 16px; border-radius:100px; text-decoration:none; color:#fff; background:#1a1a1a; white-space:nowrap; }
+  .ve-visit:hover{ background:#fff; color:#000; }
+
+  /* VIDEOS - NOW WITH GAP */
+  .ve-videos{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:5px; padding:24px; background:#111; }
+  .ve-video{ position:relative; display:block; text-decoration:none; background:#0f0f0f; overflow:hidden; border-radius:8px; }
+  .ve-video img{ width:100%; aspect-ratio:16/9; object-fit:cover; display:block; transition:transform .4s ease; }
+  .ve-video:hover img{ transform:scale(1.08); }
+  .ve-video-meta{ position:absolute; bottom:0; left:0; right:0; padding:12px 14px; background:linear-gradient(transparent, rgba(0,0,0,.9)); font-size:11px; z-index:2; }
+  .ve-video-meta b{ font-weight:600; color:#fff; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  @media(max-width: 1024px){ .ve-videos{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
+  @media(max-width: 640px){ .ve-wrap{ padding:28px 14px; } .ve-videos{ grid-template-columns:1fr; gap:12px; padding:16px; } .ve-visit{ width:100%; text-align:center; } .ve-main-box{ gap:24px; } }
+</style>
+
+<div class="ve-bg">
+<section class="ve-wrap">
+  <div class="ve-title">Edited Videoz</div>
+  <div class="ve-sub">For all videos, link directly to client YouTube pages</div>
+
+  <div class="ve-main-box">
+    
+    <div class="ve-client-group">
+      <div class="ve-client-top">
+        <img class="ve-avatar" src="https://photos.zillowstatic.com/fp/7cddccf327a7d6d7d885fe6bc86b2963-h_l.jpg" alt="">
+        <div class="ve-client-info"><b>Karyl Allen</b><span>Karyl Allen - Sell Your Home, Northern Virginia</span></div>
+        <a class="ve-visit" href="https://www.youtube.com/@SellYourHome-NorthernVirginia" target="_blank">VISIT PAGE</a>
+      </div>
+      <div class="ve-videos">
+        <a class="ve-video" href="https://www.youtube.com/watch?v=on_lwyYMzS0" target="_blank"><img src="https://img.youtube.com/vi/on_lwyYMzS0/maxresdefault.jpg" alt=""><div class="ve-video-meta"><b>Don’t Wait to Sell Your Northern Virginia Home</b></div></a>
+        <a class="ve-video" href="https://www.youtube.com/watch?v=-_6U4yzdLk0" target="_blank"><img src="https://img.youtube.com/vi/-_6U4yzdLk0/maxresdefault.jpg" alt=""><div class="ve-video-meta"><b>Real Estate Seasonality in NoVA</b></div></a>
+        <a class="ve-video" href="https://www.youtube.com/watch?v=upe6319ifqM" target="_blank"><img src="https://img.youtube.com/vi/upe6319ifqM/maxresdefault.jpg" alt=""><div class="ve-video-meta"><b>Evaluating Offers in Northern Virginia</b></div></a>
+        <a class="ve-video" href="https://www.youtube.com/watch?v=8vbqKCRCl-M&t=37s" target="_blank"><img src="https://img.youtube.com/vi/8vbqKCRCl-M/maxresdefault.jpg" alt=""><div class="ve-video-meta"><b>Selling Family Home in Northern Virginia</b></div></a>
+      </div>
+    </div>
+
+    <div class="ve-client-group">
+      <div class="ve-client-top">
+        <img class="ve-avatar" src="https://yt3.googleusercontent.com/Rgo4PHIG4GVoCxhq9wHW7Oom_b-zwMhgVUiAJ-jgjmlOn8jDLFD4wx5ISGaZ1baZa4XUQmsUvg=s160-c-k-c0x00ffffff-no-rj" alt="">
+        <div class="ve-client-info"><b>The Grahams</b><span>Living in Birmingham Alabama</span></div>
+        <a class="ve-visit" href="https://www.youtube.com/@liveinbirminghamalabama" target="_blank">VISIT PAGE</a>
+      </div>
+      <div class="ve-videos">
+        <a class="ve-video" href="https://www.youtube.com/watch?v=7bMfWrEnm0Y" target="_blank"><img src="https://img.youtube.com/vi/7bMfWrEnm0Y/maxresdefault.jpg" alt=""><div class="ve-video-meta"><b>Here’s what you can get for $300k in Birmingham, AL</b></div></a>
+        <a class="ve-video" href="https://www.youtube.com/watch?v=Ppy1C62duHs" target="_blank"><img src="https://img.youtube.com/vi/Ppy1C62duHs/maxresdefault.jpg" alt=""><div class="ve-video-meta"><b>The community is Peavine Crossings in the suburb of Alabaster</b></div></a>
+        <a class="ve-video" href="https://www.youtube.com/watch?v=PovZdn57GMA" target="_blank"><img src="https://img.youtube.com/vi/PovZdn57GMA/maxresdefault.jpg" alt=""><div class="ve-video-meta"><b>The Pros and Cons to Living in Birmingham, AL</b></div></a>
+        <a class="ve-video" href="https://www.youtube.com/watch?v=Yno8deJpqqI" target="_blank"><img src="https://img.youtube.com/vi/Yno8deJpqqI/hqdefault.jpg" alt=""><div class="ve-video-meta"><b>Consider These Things Before Moving to Birmingham, AL</b></div></a>
+      </div>
+    </div>
+
+    <div class="ve-client-group">
+      <div class="ve-client-top">
+        <img class="ve-avatar" src="https://yt3.googleusercontent.com/WRSjn_2MD967UOTbrjzB62jOymqHuetGdlSWliTmK7rnnlqRiqizu8yS70tDfTmrCCfHO4x_=s160-c-k-c0x00ffffff-no-rj" alt="">
+        <div class="ve-client-info"><b>Tom's Smart Home</b><span>Helping smart home users build reliable, privacy-first systems that work locally!</span></div>
+        <a class="ve-visit" href="https://www.youtube.com/@TomsSmartHome" target="_blank">VISIT PAGE</a>
+      </div>
+      <div class="ve-videos">
+        <a class="ve-video" href="https://www.youtube.com/watch?v=hntukXBaar8" target="_blank"><img src="https://img.youtube.com/vi/hntukXBaar8/maxresdefault.jpg" alt=""><div class="ve-video-meta"><b>Are Premium Smart Shades Worth The Price? SmartWave Review</b></div></a>
+        <a class="ve-video" href="https://www.youtube.com/watch?v=oou1W-YDIiQ" target="_blank"><img src="https://img.youtube.com/vi/oou1W-YDIiQ/maxresdefault.jpg" alt=""><div class="ve-video-meta"><b>Here's How To Easily Create Your First HA Automation!</b></div></a>
+        <a class="ve-video" href="https://www.youtube.com/watch?v=ylLDxozf6wI" target="_blank"><img src="https://img.youtube.com/vi/ylLDxozf6wI/maxresdefault.jpg" alt=""><div class="ve-video-meta"><b>Home Assistant Scripts: The Secret to Smarter Automations!</b></div></a>
+        <a class="ve-video" href="https://www.youtube.com/watch?v=XN-mP830MVs&t=265s" target="_blank"><img src="https://img.youtube.com/vi/XN-mP830MVs/maxresdefault.jpg" alt=""><div class="ve-video-meta"><b>Best $70 Smart Garage Door Opener? (Meross MSG200HK)</b></div></a>
+      </div>
+    </div>
+
+   <div class="ve-client-group">
+      <div class="ve-client-top">
+        <img class="ve-avatar" src="https://yt3.googleusercontent.com/XTwcC-1N1ZucdE2EfLZL5DQhvVoJ0OKprEYggbzvDpRWY0zXiSLfX76bJsPOYThjY_Ue9skBDw=s160-c-k-c0x00ffffff-no-rj" alt="">
+        <div class="ve-client-info"><b>HypertrophyDad</b><span>@HypertrophyDad</span></div>
+        <a class="ve-visit" href="https://www.youtube.com/@HypertrophyDad" target="_blank">VISIT PAGE</a>
+      </div>
+      <div class="ve-videos">
+        <a class="ve-video" href="https://www.youtube.com/watch?v=BFZlm08q_1U&t=315s" target="_blank"><img src="https://img.youtube.com/vi/BFZlm08q_1U/maxresdefault.jpg" alt=""><div class="ve-video-meta"><b>Don’t ever miss these 6 blood markers</b></div></a>
+        <a class="ve-video" href="https://www.youtube.com/watch?v=puMKsFL3nks&t=3s" target="_blank"><img src="https://img.youtube.com/vi/puMKsFL3nks/maxresdefault.jpg" alt=""><div class="ve-video-meta"><b>Client result after only 1 month!</b></div></a>
+        <a class="ve-video" href="https://www.youtube.com/watch?v=BGHHy2gWD5w&t=61s" target="_blank"><img src="https://img.youtube.com/vi/BGHHy2gWD5w/maxresdefault.jpg" alt=""><div class="ve-video-meta"><b>How Millennial Dads get their Body back Without blowing up their Life</b></div></a>
+        <a class="ve-video" href="https://www.youtube.com/watch?v=GdbEN4aZQl0" target="_blank"><img src="https://img.youtube.com/vi/GdbEN4aZQl0/maxresdefault.jpg" alt=""><div class="ve-video-meta"><b>Why Millennial Dads Are Waking Up</b></div></a>
+      </div>
+    </div>
+
+  </div>
+</section>
+</div>
