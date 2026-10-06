@@ -1935,7 +1935,7 @@ document.querySelector('.cowboy-container span').addEventListener('click', funct
         <span style="visibility: hidden;"></span>
         <span style="font-size: 5vh !important; cursor: pointer; color: #fff; position: relative; top: -25vh; right: -.9vw;" onclick="document.querySelector('.mix-weapon-container').style.display = 'none'; document.querySelector('.mix-weapon-logo-container').style.display = 'block'; document.querySelector('.cowboy-image-container').style.display = 'flex'; document.querySelector('.sword-logo-container').style.display = 'block'; document.querySelector('.cp-logo-container').style.display = 'block';">&times;</span>
     </div>
-    <h1 onclick="document.getElementById('myAudio').paused ? document.getElementById('myAudio').play() : document.getElementById('myAudio').pause()" style="position: relative; font-size: 1.5vh; color: #fff; top: -29.5vh; cursor: pointer;">Ancient Weapon</h1>
+    <h1 onclick="var a=document.getElementById('myAudio'); if(a.paused){a.currentTime=0; a.play()}else{a.pause(); a.currentTime=0;}" style="position: relative; font-size: 1.5vh; color: #fff; top: -29.5vh; cursor: pointer;">Ancient Weapon</h1>
     <audio id="myAudio" src="mix/pain1.mp4" loop></audio>
     <div id="mix-weapons" style="display: grid; grid-template-columns: repeat(5, 1fr); justify-items: center; gap: 1vw;">
     
