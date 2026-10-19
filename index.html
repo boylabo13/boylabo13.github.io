@@ -109,10 +109,22 @@ display: none !important;
 
 <style>
 @media (min-width: 992px) and (orientation: landscape) {
-  #navbarSupportedContent{display:none !important;}
-  #navbarSupportedContent.show{display:block !important; visibility:visible !important;}
+  #navbarSupportedContent{
+    display:none !important;
+  }
+  #navbarSupportedContent.show{
+    display:block !important;
+    visibility:visible !important;
+    opacity:0;
+    animation: slowAppear 1.5s ease forwards;
+  }
   #desktopMenuImg{display:block !important;}
   #desktopMenuText{display:block !important;}
+}
+
+@keyframes slowAppear {
+  from { opacity:0; }
+  to { opacity:1; }
 }
 </style>
 
