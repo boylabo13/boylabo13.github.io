@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>brom2x album</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    body {
+ background-image: linear-gradient(to right, #808080, #666666);
+  font-family: 'Montserrat', sans-serif !important; 
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+
+.photo-album {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: calc((500px - 6px) / 4);
+  gap: 5px;
+  overflow-y: auto;
+  width: 500px;
+  height: 500px;
+}
+
+.photo-album img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+}
+
+.lightbox img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90%;
+  max-height: 90%;
+  cursor: pointer;
+}
+
+.close-btn {
+  position: absolute;
+  top: -20px;
+  right: 1px;
+  font-size: 60px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.back-button-container {
+  position: fixed;
+  top: 5px;
+  left: -5px;
+}
+
+.back-button img {
+  width: 2.5vw;
+  height: auto;
+  transform: scaleX(-1);
+}
+
+.back-button {
+  display: inline-block;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.lightbox[style*="block"] + .back-button-container {
+  pointer-events: none;
+  opacity: 0.5; /* Optional: to visually indicate it's disabled */
+}
+
+/* Make sure the layout remains the same on smaller screens */
+@media (max-width: 768px) {
+  .photo-album {
+    width: 400px;
+    height: 400px;
+    grid-auto-rows: calc((400px - 6px) / 4);
+  }
+
+  .back-button img {
+  width: 30px !important;
+  height: auto !important;
+  transform: scaleX(-1) !important;
+}
+
+}
+
+@media (max-width: 480px) {
+  .photo-album {
+    width: 300px;
+    height: 300px;
+    grid-auto-rows: calc((300px - 6px) / 4);
+  }
+
+  .back-button img {
+  width: 30px !important;
+  height: auto !important;
+  transform: scaleX(-1) !important;
+}
+
+}
+
+@media (max-width: 320px) {
+  .photo-album {
+    width: 250px;
+    height: 250px;
+    grid-auto-rows: calc((250px - 6px) / 4);
+  }
+
+  .back-button img {
+  width: 30px !important;
+  height: auto !important;
+  transform: scaleX(-1) !important;
+}
+
+}
+
+  </style>
+</head>
+<body>
+  <div class="photo-album">
+    <img src="https://scontent.fceb1-1.fna.fbcdn.net/v/t39.30808-6/894227325_2639564899815366_1868847361555831027_n.jpg?stp=dst-jpg_tt6&cstp=mx1684x2048&ctp=s1684x2048&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=Fiv0crpSGXwQ7kNvwEqImpg&_nc_oc=AdogKYtSfndShK6ZFYsYfjM9dqAcHzgKByL1XJUlFJI9-HHEh2CyYhIiNJeCh5V1huQ&_nc_zt=23&_nc_ht=scontent.fceb1-1.fna&_nc_gid=nNQ3fzoAoPmCuAjP5FKoNw&_nc_ss=7b2a8&oh=00_AQQ5704kU6kakSelB1CG7n26kpJAg-u0UNGl26twfzDioA&oe=6AF7001D" alt="Image 1" onclick="openLightbox(this.src)">
+     <img src="https://scontent.fceb1-1.fna.fbcdn.net/v/t39.30808-6/897251563_2639565066482016_4475164936375237135_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1805&ctp=s2048x1805&_nc_cat=111&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=iph02umnjzAQ7kNvwGwmq4U&_nc_oc=Adooc3gA3fj65OyHLnyvDLF1CIoPegFzDEbm1CRUqKA6ARS09wnONKifZpOxcLENLIs&_nc_zt=23&_nc_ht=scontent.fceb1-1.fna&_nc_gid=YIcHLK1FNFPG6z5FFvMyPQ&_nc_ss=7b2a8&oh=00_AQRVKNujnsc9j-MWClhPxzhcIuXhk1Ty2Vn2PCoarEKEtg&oe=6AF71A25" alt="Image 1" onclick="openLightbox(this.src)">
+     <img src="https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/896425160_2639564826482040_8256877442522359789_n.jpg?stp=dst-jpg_tt6&cstp=mx1496x2048&ctp=s1496x2048&_nc_cat=111&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=2R66fKGPfKMQ7kNvwHOtRJp&_nc_oc=Ado6HhhoK-2aCTr7_U13KRWSVYIBBXaTN6UnKLDuurNrABie8D9RCPtQJ51s1Xb2QOM&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=MlUs4zMXTIt9_0hT6nh3WQ&_nc_ss=7b2a8&oh=00_AQRRs0ZLwV9dnL9sgFWjxoSxDAP-WsFS4ZaQqadShIGAPQ&oe=6AF71355" alt="Image 1" onclick="openLightbox(this.src)">
+     <img src="https://scontent.fceb1-4.fna.fbcdn.net/v/t39.30808-6/895792576_2639564986482024_8592411294517039963_n.jpg?stp=dst-jpg_tt6&cstp=mx1413x2048&ctp=s1413x2048&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=F-KqoFHVDIIQ7kNvwGRX82r&_nc_oc=AdoBxVXjYJTOM4x9qN6Zhfv9Ar6JyhVzr3l5QVMN3oTtF0WC89LaFaKdThMXJd2FGSk&_nc_zt=23&_nc_ht=scontent.fceb1-4.fna&_nc_gid=bZmWtSPQZyYhbnXmCTakaw&_nc_ss=7b2a8&oh=00_AQTQxjbxSGOuomZFByXW9_sN6uYcRqGN2Eq0DRr7khnlPg&oe=6AF707B2" alt="Image 1" onclick="openLightbox(this.src)">
+     <img src="https://scontent.fceb1-5.fna.fbcdn.net/v/t39.30808-6/896897205_2639565156482007_8753652227830290344_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1792&ctp=s2048x1792&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=GZzaDgGyH7cQ7kNvwHi9Dz4&_nc_oc=AdoYuXT9hvJIX78ACP9iSG0QiyQdmQ7L9W8vnRAq62gxhLpCvu0FyDnflOSv0gsk7C8&_nc_zt=23&_nc_ht=scontent.fceb1-5.fna&_nc_gid=ZNtA5LJQfMuqG34vFFUAng&_nc_ss=7b2a8&oh=00_AQSy5I9m2BTRbtaw-Vp-phEyWiyXm_drmT0dfsSrZUY7MQ&oe=6AF700E3" alt="Image 1" onclick="openLightbox(this.src)">
+     <img src="https://scontent.fceb1-4.fna.fbcdn.net/v/t39.30808-6/899820672_2639565236481999_8036165546394785089_n.jpg?stp=dst-jpg_tt6&cstp=mx1752x2048&ctp=s1752x2048&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=cmHATTUIUwMQ7kNvwHDeXir&_nc_oc=AdobtCCYEA-4StTFOjudwUPJDOj_YRh7yHBtG5rJaMdrCvuvON-tadTHJ3vGHSve-R8&_nc_zt=23&_nc_ht=scontent.fceb1-4.fna&_nc_gid=Ib9J6AndciLPZ4jLTi-QXw&_nc_ss=7b2a8&oh=00_AQSRFoaG1yRx_MBU1jmO8AUf3uAkjAkV67hHCLeZo7nP9Q&oe=6AF7144D" alt="Image 1" onclick="openLightbox(this.src)">
+     <img src="https://scontent.fceb1-1.fna.fbcdn.net/v/t39.30808-6/897133245_2639565346481988_3582290764901255158_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=wSRY6B4oHooQ7kNvwFG-U2q&_nc_oc=AdpffZrIKC6tPj0GZGTSt7Xf-oqtghMwkyHQZVsDH7YUKT3h5Pi_0Ell85EzsfgvAKc&_nc_zt=23&_nc_ht=scontent.fceb1-1.fna&_nc_gid=zFi64QmY2qRa_4n_C34q4w&_nc_ss=7b2a8&oh=00_AQRsquNL4ZP4U83Nd8iGOjZFMG4DHNr_uhJxHL1vCe1cdg&oe=6AF715D5" alt="Image 1" onclick="openLightbox(this.src)">
+     <img src="https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/896925546_2639565409815315_8431939755506473320_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=AakNoIrpZy4Q7kNvwH3A2hA&_nc_oc=Adq_9UawgNe6QuAhENdJaI8Y-roWcD-68tqFbpe0EURj_C5CuVaMzcOhOdUDtC6_51E&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=TJPSrFaxMqEOQfRObbUSsg&_nc_ss=7b2a8&oh=00_AQQUtpdL3ZPfbxKeer29T2SrJm25B0QaIMc9MZJShXVeFg&oe=6AF70D4B" alt="Image 1" onclick="openLightbox(this.src)">
+     <img src="https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/897876350_2639565493148640_8834501664599343385_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1716&ctp=s2048x1716&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=WzkvJEeuWUAQ7kNvwH9CcVv&_nc_oc=AdquxSVAeIPuLxdqIKPxmz1o4RMkdRAF9KyQLVoJUE88rU9q-ebKIz2VrQMMQaDAkOE&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=jBdf6jxLE2r7_peHPrwjqA&_nc_ss=7b2a8&oh=00_AQSsQYzrtGgBydWoVpMr0K50tcB1gdiu5QQV1EPbLM747g&oe=6AF6F622" alt="Image 1" onclick="openLightbox(this.src)">     
+     <img src="https://scontent.fceb1-5.fna.fbcdn.net/v/t39.30808-6/895025227_2639565579815298_7937823282448625556_n.jpg?stp=dst-jpg_tt6&cstp=mx1670x2048&ctp=s1670x2048&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=N3mAIX24tnMQ7kNvwEgOCIC&_nc_oc=Adr6gGrqJebtHHO5S-qmIkdP4oYnwhef6csee3_i9jEAw8bW5lWdxinAFySrE8oiEAI&_nc_zt=23&_nc_ht=scontent.fceb1-5.fna&_nc_gid=5MK32qj7WZNNClVhmwOXTQ&_nc_ss=7b2a8&oh=00_AQS5TwLSmxVfUMsp727fqF5mdxNejaORK7uzn2J8l4gbgQ&oe=6AF720A9" alt="Image 1" onclick="openLightbox(this.src)">
+     <img src="https://scontent.fceb1-2.fna.fbcdn.net/v/t39.30808-6/896201800_2639565649815291_3985544772819402308_n.jpg?stp=dst-jpg_tt6&cstp=mx1639x2048&ctp=s1639x2048&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=_g6aPMiMvL4Q7kNvwGPn5tk&_nc_oc=AdpHQtz_khV36KsS7IH5h7wSZPkC773dTStIKDRC5OwG7_DmDUnhbv7kUCww3O9B0LQ&_nc_zt=23&_nc_ht=scontent.fceb1-2.fna&_nc_gid=zM_DbZVmi5Q0uy5eH4unbQ&_nc_ss=7b2a8&oh=00_AQR5mC-UQfkc3HfbT7zopp59Ytg16WLc_ggnroXxJ7mk9A&oe=6AF70EB5" alt="Image 1" onclick="openLightbox(this.src)">
+     <img src="https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/897548336_2639565819815274_3423205016537369624_n.jpg?stp=dst-jpg_tt6&cstp=mx1611x2048&ctp=s1611x2048&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=jtcBMgFyANYQ7kNvwEbErhd&_nc_oc=AdoRsVGZ99l1T447OWgaD0XflFrSX9Z7Q-H-QjKOsjA_VEz6bfRzHXhgxuSNbS0KntM&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=zGNk2MLIxOuB5lXUoWROng&_nc_ss=7b2a8&oh=00_AQRZeKrVRUCpSjtHTR4vLxbkkNmYQ7vpYKHlkdJut1l62Q&oe=6AF70D5B" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-5.fna.fbcdn.net/v/t39.30808-6/897810860_2639566026481920_3004262433396914094_n.jpg?stp=dst-jpg_tt6&cstp=mx1418x2048&ctp=s1418x2048&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=5PMVLAIBIMkQ7kNvwF64TgN&_nc_oc=AdqvUvXmAqZDp9QMt-PvDTbC6iNG_uobBulUd2rBpqGYBnGTbGCSEWFYsT90JgAv-Jg&_nc_zt=23&_nc_ht=scontent.fceb1-5.fna&_nc_gid=QTFk6KM3CUCK9-HmQlKUOQ&_nc_ss=7b2a8&oh=00_AQR7865zz29tZT1-Cg_g4fEKPMQriGOmJDmVvmHECCimnA&oe=6AF723DC" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-2.fna.fbcdn.net/v/t39.30808-6/894924896_2639566103148579_6307128553155744283_n.jpg?stp=dst-jpg_tt6&cstp=mx415x739&ctp=s415x739&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=QQ_i_RsA-FUQ7kNvwE7PCxk&_nc_oc=AdpnAgyX01yRtI5TCMZYXpGc3Ay5sJRBr9HhgVRZTXk9c5n3eg1EUG0fzaPMRZvIb08&_nc_zt=23&_nc_ht=scontent.fceb1-2.fna&_nc_gid=7CminxNbKCE8CEiY2cQIAg&_nc_ss=7b2a8&oh=00_AQTFopV1U6PRMdNh7w3Iutb5_3kd2XPTixwwdOeSgB7E0Q&oe=6AF723EC" alt="gagamba" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-5.fna.fbcdn.net/v/t39.30808-6/899628842_2639566209815235_2540919683111551678_n.jpg?stp=dst-jpg_tt6&cstp=mx1395x2048&ctp=s1395x2048&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=yemRqwESE70Q7kNvwEYcMNY&_nc_oc=AdoN0qNfNmIFqv67xYvpPk-xVGYiw9e5-SkQo6m9Vd7PzSKAbfbInGv5K9zptCa0fdM&_nc_zt=23&_nc_ht=scontent.fceb1-5.fna&_nc_gid=IcDWYAkMcTjztMLU2uKmkQ&_nc_ss=7b2a8&oh=00_AQQRjX_bTAjkvK8cOCp6RRXtvievkWbD0_C2MS4OEOvzjg&oe=6AF705DC" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-4.fna.fbcdn.net/v/t39.30808-6/898506495_2639566413148548_6945829821594662436_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1722&ctp=s2048x1722&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=Iz32nIgDcFsQ7kNvwF7PZLg&_nc_oc=AdoZhiQrH-Mo47XdET7ZZU_bFl4xOWS9BPCaFjOgOHVy-JmWoWy_xytpBBuxH230I-c&_nc_zt=23&_nc_ht=scontent.fceb1-4.fna&_nc_gid=roOYdhPdKqpuMSbLufLJGg&_nc_ss=7b2a8&oh=00_AQQgIdXvYjKmaYinCpZtsILngh7GBZYqbqYuI0hTo1f6hA&oe=6AF6FF43" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-5.fna.fbcdn.net/v/t39.30808-6/895544556_2639566493148540_4228867930456608118_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=Vs_cexbeg8AQ7kNvwHTfYnU&_nc_oc=Adq8xUpQ1CNH1ZUx2vVxwuGFu9F36VE9EfDhnRoj0SKDVcgFgUGYRw1B9p7ftLYgIZI&_nc_zt=23&_nc_ht=scontent.fceb1-5.fna&_nc_gid=3uk4ImqkEXc27zTvaEv7jw&_nc_ss=7b2a8&oh=00_AQT5TxjtXhhTJferL-kr6ZQaXuWfVADc07vqtE-UDMUWag&oe=6AF7087D" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-1.fna.fbcdn.net/v/t39.30808-6/900762227_2639566649815191_4238764378400904769_n.jpg?stp=dst-jpg_tt6&cstp=mx1398x2048&ctp=s1398x2048&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=qrrgGWpYbKMQ7kNvwFLvUgd&_nc_oc=AdqDKZg6WPUBXaRZuKx8PIipnIv0HKxdXDzumAc_9489klEhXrKuqYX2A04MizALk1E&_nc_zt=23&_nc_ht=scontent.fceb1-1.fna&_nc_gid=oGpD4_pvb3u-PiQx_gX7GQ&_nc_ss=7b2a8&oh=00_AQQ9gpQ84GEMFx9c7UAgjy7rCCbgH1OrLvHDYGqySKLo7Q&oe=6AF72BA4" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/895150631_2639566736481849_1673964002032156219_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1304&ctp=s2048x1304&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=HHQp6DoC3GsQ7kNvwGE0FJn&_nc_oc=AdpOUmttF48HDpuT7udPWhBGmC54B6iWCRb2ZsP1U0eSV7gKYHN5h_Y9Ekj7SuhhgwQ&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=g3n1wF3ZkyK_cQ8AOMdfmQ&_nc_ss=7b2a8&oh=00_AQQLqvxVuiQ77Bd5VZ1oJBJfUbpQcKv5q5uH809B3fIeCQ&oe=6AF72BF6" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/894356085_2639566809815175_1011222529385940684_n.jpg?stp=dst-jpg_tt6&cstp=mx720x960&ctp=s720x960&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=rcMVSQ5XYxAQ7kNvwG-0-2V&_nc_oc=AdqscAKnVNb9VQaqyoVXgXXNZhqKahHmoOtFjXDdZSK_VU7Hdx_XiwIHSIqCNT4SEM0&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=nLVe6cZ1PJBuSFUYR0knog&_nc_ss=7b2a8&oh=00_AQTmIIt9SSgYNCZfHzpzEDiiA3IiN8rX3uQwx_OGeRYMYA&oe=6AF729DB" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-5.fna.fbcdn.net/v/t39.30808-6/892986723_2639566996481823_4195029699356927061_n.jpg?stp=dst-jpg_tt6&cstp=mx1199x2048&ctp=s1199x2048&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=NWXLcJj4RdoQ7kNvwHp3qGn&_nc_oc=AdrzGXpseUjkef-NNQx6fK3LUrTDBxJ2YffosCbiPUN4tOFcgmFj3Ix1qbAXKrZV7gY&_nc_zt=23&_nc_ht=scontent.fceb1-5.fna&_nc_gid=bYZ-mGnnx5XtXPo4BSw-Lw&_nc_ss=7b2a8&oh=00_AQQWDvXskrc7HiYsvwh30mFcjzN_GCcmydOpJxI80Kx50Q&oe=6AF7108E" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/894356076_2639567129815143_5752212298038309346_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=101&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=FshesPe0NtoQ7kNvwE4vVeK&_nc_oc=Adpiibx3_rRvvCnpp7jEdtYFwdQmNGyI0nYrirew09poxSE5wLXFV9gwYeKT9l6bCJg&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=MJWmu2QqrU6HcsUHgUEV4w&_nc_ss=7b2a8&oh=00_AQTmNY-4HglP1-S3AvYVIwWF2r6tjnkCaufxy4-4yfsfrQ&oe=6AF727BA" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-2.fna.fbcdn.net/v/t39.30808-6/895544584_2639567256481797_7326047033953459959_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=xYRPpuMR8ukQ7kNvwEKNxfm&_nc_oc=AdogXFV5hQYN93ZHq-Vh4ML6CWdM9ReNw-FnMfIuHDFx0m_8Mk7cnbDafuyXpoddlsI&_nc_zt=23&_nc_ht=scontent.fceb1-2.fna&_nc_gid=HVyPaF4S9VT6dfS7-No62g&_nc_ss=7b2a8&oh=00_AQTSB-QfHn3SU7UsgGHYJ0HgE6-svxpImu5UF6wSavdwXA&oe=6AF703A2" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-4.fna.fbcdn.net/v/t39.30808-6/900997861_2639567369815119_6117103601126542076_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1770&ctp=s2048x1770&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=l3ubLKR1y7UQ7kNvwGiBsuF&_nc_oc=Adp6BiCRWYaJo60RIGVXb4YhUTiudJXwibq96GxEciyuGrnzGk8zw6toqYfEiIPpyF4&_nc_zt=23&_nc_ht=scontent.fceb1-4.fna&_nc_gid=r_jfhMIGNbUeFtAWtUU6yQ&_nc_ss=7b2a8&oh=00_AQRnPh57clnAfH6IxmrSCqd9w-UxOS9k_Emd3mkzYvYuiw&oe=6AF71916" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-2.fna.fbcdn.net/v/t39.30808-6/898166579_2639567453148444_2608103464321961055_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=111&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=QaSnA_-9_IgQ7kNvwEz2Pu9&_nc_oc=AdolL83at4nNZ6c5ImngkzuaiRJMPupkEFhkhn9fwWpfEvHnUOcurUf38a516ZlWNyA&_nc_zt=23&_nc_ht=scontent.fceb1-2.fna&_nc_gid=Qo4iy0JHvb7tzbdzeP--Rg&_nc_ss=7b2a8&oh=00_AQSddROgHS1-4cScj3YSw7_y7Bz34gpWsPjYWqqKP765lQ&oe=6AF6FEEF" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-1.fna.fbcdn.net/v/t39.30808-6/897876375_2639567566481766_8564936905323675154_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=ay6HtbsX9ToQ7kNvwGmxzcd&_nc_oc=AdpHDoODjtF1GwvxGq7n0tEki6mqDMVkVJQp0zzHPi8X1vI6ThE10qeKZ2TXRxPvY4o&_nc_zt=23&_nc_ht=scontent.fceb1-1.fna&_nc_gid=tbPyf-h1igNFUyXLDHuJIg&_nc_ss=7b2a8&oh=00_AQRn18ndrLuD0xqDQCKPy7oCUSo-bua9RaDNv5yCiyY_qg&oe=6AF706D2" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-2.fna.fbcdn.net/v/t39.30808-6/896980340_2639567663148423_5603806921335715228_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1606&ctp=s2048x1606&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=mABBcoMVlZMQ7kNvwEPabPS&_nc_oc=AdoVSEA-z6r__EKYfCZgfXP3O3QmH7wFKJPcjXjqjbms25HVk1sMObq5yek-Uxxuq0I&_nc_zt=23&_nc_ht=scontent.fceb1-2.fna&_nc_gid=zAA9pSnwTOAQXtSp4eRGgg&_nc_ss=7b2a8&oh=00_AQRLpK0NYjefWwYiRwdl4fIu_xGT19XTb-Mb7e0MADyTFw&oe=6AF70EF3" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-2.fna.fbcdn.net/v/t39.30808-6/896003026_2639567753148414_986726012579305929_n.jpg?stp=dst-jpg_tt6&cstp=mx1402x2048&ctp=s1402x2048&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=e-_4Qk6Ebj0Q7kNvwF_g4wR&_nc_oc=Adq0hcm4JxVtfprv7Qw7Zb-2hrsb0P7sA_o5CHfg4eOc68PdwInHR-0XRci81olPMQI&_nc_zt=23&_nc_ht=scontent.fceb1-2.fna&_nc_gid=gS-3YPfHU14fXsXr5OBWvQ&_nc_ss=7b2a8&oh=00_AQTAUSiyD0MKeD1ev1-_y767aPz6WJvnusIOWNqi9DQUmg&oe=6AF71562" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/899485805_2639567856481737_5706554550411835444_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=105&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=Qag2wgoQEO0Q7kNvwGfidJ5&_nc_oc=AdohbJoukQRkjUcrEJ5Ve7ZUD09ZZzuP5mddyg8Vt3NWvi46QvMht1RCwP-aP6Vz38g&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=PG31pV5AzL_i0ql-gb_Krw&_nc_ss=7b2a8&oh=00_AQQoQ2-nVoBBMKKNf_kMYvfRu4UBDMl80G0K7kACx45DCw&oe=6AF72AAE" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-5.fna.fbcdn.net/v/t39.30808-6/897433867_2639567949815061_6256443589338795018_n.jpg?stp=dst-jpg_tt6&cstp=mx1592x2048&ctp=s1592x2048&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=jz2yVOy8AhoQ7kNvwG5HDew&_nc_oc=Adr_F5LXwJ2DXP4SVE6PA5FVVlvzSSSp9ljaGtG15ojqlFGF6CjSxKHU-Zqg6YBr-Ss&_nc_zt=23&_nc_ht=scontent.fceb1-5.fna&_nc_gid=dq1UnH0VfGlr-fO6ABkj6g&_nc_ss=7b2a8&oh=00_AQRjDVvNJ0eSiwlJy9DKwdkeetNwitGBk6kPipobQ--lpw&oe=6AF7115D" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-1.fna.fbcdn.net/v/t39.30808-6/899427650_2639568033148386_1771553007740844318_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=--EuxXQeB14Q7kNvwHsZ_7S&_nc_oc=AdoL66SmxIwaf6GnRc9WapGTBbmDFqpbtoYhKjwQjyzensdVa1GhRgDGzpO_VNnMh_I&_nc_zt=23&_nc_ht=scontent.fceb1-1.fna&_nc_gid=8JpKKBV91ltZawA3EAGyrw&_nc_ss=7b2a8&oh=00_AQQZ6BQYSk2aqqoQRJwvwN1AhLyMSuSmM9Hq48i2VA-39Q&oe=6AF6FFFD" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/895150650_2639568143148375_3934965960870504417_n.jpg?stp=dst-jpg_tt6&cstp=mx1389x2048&ctp=s1389x2048&_nc_cat=104&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=GOtx2lYBX-MQ7kNvwFabLRG&_nc_oc=AdrPouYJ8RLW1megJV7_G8i_tG2hpDip4rNgtTbCWDQACXrlwC1s9eLpICqPan2vqVU&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=47hTgetfGtNIb_wnUzg4pg&_nc_ss=7b2a8&oh=00_AQTmG7GiDdsRBgPvEDPm__pfc-b_ERo0mPRuJd_d1bMiuA&oe=6AF716DC" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-1.fna.fbcdn.net/v/t39.30808-6/896783889_2639568236481699_7952584839928904597_n.jpg?stp=dst-jpg_tt6&cstp=mx1536x2048&ctp=s1536x2048&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=aM6-a-MJHI8Q7kNvwFAmJam&_nc_oc=AdoGP9-67BSaLQK1JSEdLpzCJy6q6-ZYVdoiryP7J3JECEhsIae3OCiC7uNUHgQ1IAs&_nc_zt=23&_nc_ht=scontent.fceb1-1.fna&_nc_gid=nA6JlWn5x55hD2raN425Tg&_nc_ss=7b2a8&oh=00_AQTdiBC7EG9aM-Hvoh2n2eFgNbPsB8b9j_p0bKG_9-fdJQ&oe=6AF70F3C" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/893975677_2639568326481690_6807582444121824712_n.jpg?stp=dst-jpg_tt6&cstp=mx1562x2048&ctp=s1562x2048&_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=FLRgh8vWO1EQ7kNvwHa2GZF&_nc_oc=Adqxwxj-tXVPEq3yd35ZwwWGMh07RjzX6nM1LE9Q8mZl5EtHDEw2IYbHvpaQpa9tYco&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=4HpF2iDgvOG5B4xZWJYfng&_nc_ss=7b2a8&oh=00_AQS9EXeEpaRFOY7csykzVu4uWFEt2YLlMR4b-F1ryG9Hww&oe=6AF71AFA" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-1.fna.fbcdn.net/v/t39.30808-6/893212078_2639568406481682_1257313485225945181_n.jpg?stp=dst-jpg_tt6&cstp=mx1363x2048&ctp=s1363x2048&_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=sTf7uyAnS3cQ7kNvwEp-gkA&_nc_oc=AdquCJt_eoxIR75ofRX9XC95bmpp__uo99_Rp3ZX6-e9kb359JUKM2F7jA7Z9oNqANc&_nc_zt=23&_nc_ht=scontent.fceb1-1.fna&_nc_gid=xP6uWoNHsYFD_TpUgXbh-Q&_nc_ss=7b2a8&oh=00_AQS5ZkxaA5cR-oT2yNzjiMLAy0zSLPjII2VBJ0du6277xg&oe=6AF70A09" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-5.fna.fbcdn.net/v/t39.30808-6/896257296_2639568503148339_4106344740948063898_n.jpg?stp=dst-jpg_tt6&cstp=mx1785x2048&ctp=s1785x2048&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=OG726NRDFWUQ7kNvwGBwcwU&_nc_oc=AdrWBW_iFHlxtsqZ3KIXsJr4jzRwo-MT-K-aCNSn6ch5LbO68NUxAmwbeKXWB5b979w&_nc_zt=23&_nc_ht=scontent.fceb1-5.fna&_nc_gid=qmejvHDXSHntaHCBcxUfVQ&_nc_ss=7b2a8&oh=00_AQRTY8M6kOPjtCv9LtQp_mBAp6aFCttE5viYFNYOteeEuQ&oe=6AF6F9D6" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-2.fna.fbcdn.net/v/t39.30808-6/899735315_2639568586481664_3183798380066146110_n.jpg?stp=dst-jpg_tt6&cstp=mx1392x2048&ctp=s1392x2048&_nc_cat=106&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=kMdXeqSYRvgQ7kNvwGAOhju&_nc_oc=Adokd_3xNNduJshII8DajkG_vsl3ZM9Q9Hi2lyIYw015E1qAdZYe5OtFiEYlT83cF4w&_nc_zt=23&_nc_ht=scontent.fceb1-2.fna&_nc_gid=pzKobBJlldo2pbnav4yXBg&_nc_ss=7b2a8&oh=00_AQSjVZujFT_xzld9CUjsskPjnA-ruLDoDV2nyxs8b6JUQA&oe=6AF6FCA3" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-1.fna.fbcdn.net/v/t39.30808-6/895025250_2639568693148320_1414256284710953648_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1914&ctp=s2048x1914&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=-q-FRaQSKVMQ7kNvwFpAWNy&_nc_oc=AdobxbcrHeVq7B0j2cn2uRBemvRCrSsjkOSiQyRqe44HlACoIoeEhZGYFY4EbYpd0_c&_nc_zt=23&_nc_ht=scontent.fceb1-1.fna&_nc_gid=eAtr7QWcQGNWIydhYT2NYg&_nc_ss=7b2a8&oh=00_AQQ_Bzo1Il-T9p4HeJjPgNxLIjotsz4wnOXhdWNQEgp_PA&oe=6AF6FF4A" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-1.fna.fbcdn.net/v/t39.30808-6/859255067_2639568799814976_2864879667118059206_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1536&ctp=s2048x1536&_nc_cat=103&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=xORKWLO9nVsQ7kNvwGg79Fe&_nc_oc=AdpyAEFL3L5GO6ZElPEgutV-Ujs1yCENye2qkFbiqMUngSDNhhgHDEOIteR5TO8l1WU&_nc_zt=23&_nc_ht=scontent.fceb1-1.fna&_nc_gid=H8WBKXNDI8v0M1OI4226Fg&_nc_ss=7b2a8&oh=00_AQSEYXFpBwssAbciByxkQjeX6-VbikiykwMUKqnEsxH-6A&oe=6AF703E0" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-2.fna.fbcdn.net/v/t39.30808-6/893596583_2639568869814969_27105679278645574_n.jpg?stp=dst-jpg_tt6&cstp=mx1758x1924&ctp=s1758x1924&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=FZc9UqJj8fgQ7kNvwGOTQgK&_nc_oc=Ado7wBXLpF0P4N-xdW8zGsCuQmKqyBYpGherYyi2OQErpGSStOzLL0eSfqTIR3fP7r8&_nc_zt=23&_nc_ht=scontent.fceb1-2.fna&_nc_gid=ArHJlRHwaZY0zsGTj_ahRw&_nc_ss=7b2a8&oh=00_AQSDbSC6JIKlLaAB77JAvflvfrJvxzH5xsGfZNjpwH7dRA&oe=6AF716B8" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-4.fna.fbcdn.net/v/t39.30808-6/895544573_2639568949814961_2824150571265411478_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1625&ctp=s2048x1625&_nc_cat=107&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=pmbUd-z5xmMQ7kNvwGorMbc&_nc_oc=AdoiAaO-EfWr-1DyRKByEPMlY8ITpKI2cLbhK8_0H1ueQsyuffFGE4rHEZbzTzI3dTw&_nc_zt=23&_nc_ht=scontent.fceb1-4.fna&_nc_gid=jF870PEsIfffjH3nP2mxsg&_nc_ss=7b2a8&oh=00_AQTr3V3n5O_DQUWPmnB6u_s8SqacVzf7EEo1jAEmcRpQGg&oe=6AF71001" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-4.fna.fbcdn.net/v/t39.30808-6/894034341_2639569103148279_6084217978588876621_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1391&ctp=s2048x1391&_nc_cat=102&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=SwU8QuE8SQMQ7kNvwFjqneL&_nc_oc=Adp5JE506xgxeksYdikl3Us7yHvpggXV5tZQHMoK9j5dDJKVc1vsZkD1Oj3OziKaEV4&_nc_zt=23&_nc_ht=scontent.fceb1-4.fna&_nc_gid=c92iK78-rYdSIyOmK2yToA&_nc_ss=7b2a8&oh=00_AQS_-o7nbzqy9S_vCOBZVxNz6p3hqSZ-qOoHlo4wIBRcvA&oe=6AF70E67" alt="Image 1" onclick="openLightbox(this.src)">
+    <img src="https://scontent.fceb1-3.fna.fbcdn.net/v/t39.30808-6/896425160_2639564826482040_8256877442522359789_n.jpg?stp=dst-jpg_tt6&cstp=mx1496x2048&ctp=s1496x2048&_nc_cat=111&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=f727a1&_nc_ohc=2R66fKGPfKMQ7kNvwHOtRJp&_nc_oc=Ado6HhhoK-2aCTr7_U13KRWSVYIBBXaTN6UnKLDuurNrABie8D9RCPtQJ51s1Xb2QOM&_nc_zt=23&_nc_ht=scontent.fceb1-3.fna&_nc_gid=zR-aOloV3hLC8s0ORQk5yQ&_nc_ss=7b2a8&oh=00_AQTQsq0HNCTLJ_kHQ_Gttd6Kp6_Kx4knd-LkvFWoJS_dMg&oe=6AF71355" alt="Image 1" onclick="openLightbox(this.src)">
+    
+    
+ 
+    </div> 
+
+  <div class="back-button-container">
+    <a href="index.html" onclick="localStorage.setItem('showpfolder', true); return true;" class="back-button"> <img src="img/Adobe Express - file.png" alt="Back"> </a>
+</div>
+
+  <div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+  <span class="close-btn" onclick="closeLightbox()">×</span>
+</div>
+
+<script>
+let currentImageIndex;
+let lightboxImages;
+let touchStartX = 0;
+let isZoomed = false;
+let currentScale = 1;
+let startX, startY, translateX = 0, translateY = 0, isDragging = false;
+
+function openLightbox(index) {
+  lightboxImages = Array.from(document.querySelectorAll('.photo-album img'));
+  currentImageIndex = index;
+  document.getElementById('lightbox').style.display = 'block';
+  document.getElementById('lightbox-img').src = lightboxImages[currentImageIndex].src;
+  document.querySelector('.back-button').style.pointerEvents = 'none';
+  document.getElementById('lightbox-img').style.top = '50%';
+  document.getElementById('lightbox-img').style.left = '50%';
+  document.getElementById('lightbox-img').style.transform = 'translate(-50%, -50%) scale(1)';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+  document.querySelector('.back-button').style.pointerEvents = 'auto';
+  document.getElementById('lightbox-img').style.transform = 'translate(-50%, -50%) scale(1)';
+  currentScale = 1;
+  translateX = 0;
+  translateY = 0;
+}
+
+function navigateLightbox(direction) {
+  if (currentScale !== 1) return;
+  currentImageIndex = (currentImageIndex + direction + lightboxImages.length) % lightboxImages.length;
+  document.getElementById('lightbox-img').src = lightboxImages[currentImageIndex].src;
+  document.getElementById('lightbox-img').style.transform = 'translate(-50%, -50%) scale(1)';
+  currentScale = 1;
+  translateX = 0;
+  translateY = 0;
+}
+
+document.addEventListener('keydown', (event) => {
+  if (document.getElementById('lightbox').style.display === 'block') {
+    if (event.key === 'ArrowLeft') {
+      navigateLightbox(-1);
+    } else if (event.key === 'ArrowRight') {
+      navigateLightbox(1);
+    } else if (event.key === 'Escape') {
+      closeLightbox();
+    }
+  }
+});
+
+document.getElementById('lightbox').addEventListener('click', (event) => {
+  if (event.target === document.getElementById('lightbox')) {
+    closeLightbox();
+  }
+});
+
+document.getElementById('lightbox-img').addEventListener('wheel', (event) => {
+  event.preventDefault();
+  if (event.deltaY < 0) {
+    currentScale *= 1.1;
+  } else {
+    currentScale /= 1.1;
+  }
+  document.getElementById('lightbox-img').style.top = '50%';
+  document.getElementById('lightbox-img').style.left = '50%';
+  document.getElementById('lightbox-img').style.transform = `translate(${translateX}px, ${translateY}px) translate(-50%, -50%) scale(${currentScale})`;
+});
+
+document.getElementById('lightbox-img').addEventListener('mousedown', (event) => {
+  if (currentScale !== 1) {
+    isDragging = true;
+    startX = event.clientX;
+    startY = event.clientY;
+    document.getElementById('lightbox-img').style.cursor = 'grabbing';
+  }
+});
+
+document.addEventListener('mousemove', (event) => {
+  if (isDragging) {
+    translateX += event.clientX - startX;
+    translateY += event.clientY - startY;
+    startX = event.clientX;
+    startY = event.clientY;
+    document.getElementById('lightbox-img').style.transform = `translate(${translateX}px, ${translateY}px) translate(-50%, -50%) scale(${currentScale})`;
+  }
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+  if (currentScale > 1) {
+    document.getElementById('lightbox-img').style.cursor = 'grab';
+  }
+});
+
+document.getElementById('lightbox-img').addEventListener('touchstart', (event) => {
+  if (currentScale !== 1) {
+    isDragging = true;
+    startX = event.touches[0].clientX;
+    startY = event.touches[0].clientY;
+  }
+  touchStartX = event.touches[0].clientX;
+});
+
+document.getElementById('lightbox-img').addEventListener('touchmove', (event) => {
+  if (isDragging) {
+    translateX += event.touches[0].clientX - startX;
+    translateY += event.touches[0].clientY - startY;
+    startX = event.touches[0].clientX;
+    startY = event.touches[0].clientY;
+
+        document.getElementById('lightbox-img').style.transform = `translate(${translateX}px, ${translateY}px) translate(-50%, -50%) scale(${currentScale})`;
+  }
+});
+
+document.getElementById('lightbox-img').addEventListener('touchend', (event) => {
+  isDragging = false;
+  const touchEndX = event.changedTouches[0].clientX;
+  const swipeThreshold = 50;
+
+  if (touchStartX - touchEndX > swipeThreshold) {
+    navigateLightbox(1);
+  } else if (touchEndX - touchStartX > swipeThreshold) {
+    navigateLightbox(-1);
+  }
+});
+
+document.getElementById('lightbox-img').addEventListener('click', (event) => {
+  const rect = event.target.getBoundingClientRect();
+  if (event.clientX < rect.left + rect.width / 2) {
+    navigateLightbox(-1);
+  } else {
+    navigateLightbox(1);
+  }
+});
+
+const albumImages = document.querySelectorAll('.photo-album img');
+albumImages.forEach((image, index) => {
+  image.addEventListener('click', () => openLightbox(index));
+});
+</script>
+
+
+</body>
