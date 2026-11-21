@@ -237,8 +237,28 @@ position: fixed;
 <body>
   <section class="video-episodes">
     <h2 style="text-align: center;">
-      <img src="img/soso.png" alt="soso" class="soso-logo">
-    </h2>
+  <img src="img/soso.png" alt="soso" class="soso-logo" id="sosoImg" style="cursor: pointer;">
+</h2>
+
+<audio id="sosoSound" src="soso sound/sosojojo.weba" preload="auto"></audio>
+
+<script>
+  const img = document.getElementById('sosoImg');
+  const sound = document.getElementById('sosoSound');
+  let stopTimer;
+
+  img.addEventListener('click', () => {
+    clearTimeout(stopTimer); // cancel old stop timer if you spam click
+
+    sound.currentTime = 13.3; // start at 13 secs
+    sound.play();
+
+    // stop after 2 secs = at 15 secs
+    stopTimer = setTimeout(() => {
+      sound.pause();
+    }, 2000);
+  });
+</script>
     <ul class="episode-list" id="episode-list"></ul>
     <div class="pagination" id="pagination"></div>
     <div id="video-container"></div>
